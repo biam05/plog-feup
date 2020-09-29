@@ -97,29 +97,40 @@ airplane(X, Y), Y \= 'Edge540'.
 
 % 3
 
+% livros
 book('Os Maias').
 
-author('Eça de Queiroz').
+% autores
+author('Eca de Queiroz').
 
-wrotebook('Os Maias', 'Eça de Queiroz').
+% livros escritos: wrotebook(X, Y) -> o livro X foi escrito por Y
+wrotebook('Os Maias', 'Eca de Queiroz').
 
-nacionality('português').
-nacionality('inglês').
+% nacionalidades
+nationality('portugues').
+nationality('ingles').
 
+% nacionalidade do autor: authorn(X, Y) -> o autor X é da nacionalidade Y
+authorn('Eca de Queiroz', 'portugues').
+
+% géneros
 genre('romance').
-genre('ficção').
+genre('ficcao').
 
-wrotegenre('Eça de Queiroz', 'romance').
+% géneros escritos pelo autor: wrotegenre(X, Y) -> o autor X escreve o género Y
+wrotegenre('Eca de Queiroz', 'romance').
 
 /*
 Quem escreveu “Os Maias”?
 wrotebook('Os Maias', X).
 
 Que autores portugueses escrevem romances?
-wrotegenre(X, 'ficção'), wrotegenre(X, _Y), 'ficção' @< _Y.
+wrotegenre(X, 'romance'), authorn(X, 'portugues').
 
 Quais os autores de livros de ficção que escreveram livros de outro tipo também?
-wrotegenre(X, 'ficação'), wrotegenre(X, 'romance').
+wrotegenre(X, 'ficcao'), wrotegenre(X, _Y), 'ficcao' @< _Y.
 */
+
+
 
 
