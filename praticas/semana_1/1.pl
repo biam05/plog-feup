@@ -1,31 +1,30 @@
-% 1
-
-% pessoas do sexo masculino
+% male characters
 male('Aldo Burrows').
 male('Lincoln Burrows').
 male('Michael Scofield').
 male('LJ Burrows').
 
-% pessoas do sexo feminino
+% female characters
 female('Christina Rose Scofield').
 female('Lisa Rix').
 female('Sara Tancredi').
 female('Ella Scofield').
 
-% parentesco: parent(X, Y) -> X é filho de Y
-parent('LJ Burrows', 'Lisa Rix').
-parent('LJ Burrows', 'Lincoln Burrows').
-parent('Lincoln Burrows', 'Aldo Burrows').
-parent('Lincoln Burrows', 'Christina Rose Scofield').
-parent('Ella Scofield', 'Michael Scofield').
-parent('Ella Scofield', 'Sara Tancredi').
-parent('Michael Scofield', 'Aldo Burrows').
-parent('Michael Scofield', 'Christina Rose Scofield').
+% parent relationship -> parent(X, Y): X is the parent of Y
+parent('Aldo Burrows', 'Lincoln Burrows').
+parent('Aldo Burrows', 'Michael Scofield').
 
-/*
-Quem são os pais de Michael?
-parent('Michael Scofield', X).
+parent('Christina Rose Scofield', 'Lincold Burrows').
+parent('Christina Rose Scofield', 'Michael Scofield').
 
-Quem são os filhos de Aldo?
-parent(X, 'Aldo Burrows').
-*/
+parent('Lisa Rix', 'LJ Burrows').
+parent('Lincoln Burrows', 'LJ Burrows').
+
+parent('Michael Scofield', 'Ella Scofield').
+parent('Sara Tancredi', 'Ella Scofield').
+
+/* Pais de Michael : parent(X, 'Michael Scofield').
+X = 'Aldo Burrows'; X = 'Christina Rose Scofield'. */
+
+/* Filhos de Aldo : parent('Aldo Burrows', X).
+X = 'Lincoln Burrows'; X = 'Michael Scofield'. */
