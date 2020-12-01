@@ -15,8 +15,8 @@ game('Carrier Shift: Game Over', [action, fps, multiplayer, shooter], 16).
 game('Duas Botas', [action, free, strategy, moba], 12).
 
 %played(Player, Game, HoursPlayed, PercentUnlocked)
-played('Best Player Ever', '5 ATG', 3, 83).
 played('Worst Player Ever', '5 ATG', 52, 9).
+played('Best Player Ever', '5 ATG', 3, 83).
 played('The Player', 'Carrier Shift: Game Over', 44, 22).
 played('A Player', 'Carrier Shift: Game Over', 48, 24).
 played('A-Star Player', 'Duas Botas', 37, 16).
@@ -110,7 +110,22 @@ averageAge(Game, AverageAge) :-
 % mais eficiente é aquele que conseguiu alcançar uma maior percentagem de conclusão do jogo 
 % num menor número de horas.
 mostEffectivePlayers(Game, Players) :-
-    findall(Username, played(Username, Game, HoursPlayed, PercentUnlocked), PlayersOfGame).
+    findall(Username-HoursPlayed-PercentUnlocked, played(Username, Game, HoursPlayed, PercentUnlocked), AuxPlayers),
+    getValues(AuxPlayers, A),
+    keysort(A, B),
+    getUsernameList(B, Players).
+
+getValues([],[]).
+getValues([Username-HoursPlayed-PercentUnlocked|T], [Username-Value|V]) :-
+    Value is PercentUnlocked/HoursPlayed,
+    getValues(T, V).
+
+getUsernameList([], []).
+getUsernameList([P1-V1, P2-V2|T], [P1]) :-
+    V1 > V2.
+getUsernameList([P1-V1, P2-V2|T], [P1, P2]) :-
+    V1 = V2.
+
 % -------------- NOT FINISHED --------------
 
 % ----------------------------- 10 ----------------------------- 
