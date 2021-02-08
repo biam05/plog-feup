@@ -1,0 +1,3 @@
+[submodule "plog-proj"]
+	path = plog-proj
+	url = https://github.com/biam05/plog-proj
